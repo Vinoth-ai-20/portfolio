@@ -3,12 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+  /* Fix overscroll background — html element must match the theme bg */
   html {
     scroll-behavior: smooth;
+    background-color: #000000; /* dark default — matches dark:bg-black */
+  }
+
+  /* When light mode is active (no .dark class on html), use white */
+  html:not(.dark) {
+    background-color: #ffffff;
   }
 
   body {
     @apply font-body transition-colors duration-300;
+    background-color: inherit;
   }
 
   * {
@@ -42,6 +50,11 @@
   .card {
     @apply bg-alabaster dark:bg-prussian rounded-2xl p-6 transition-all duration-300;
   }
+}
+
+/* Overscroll bounce on macOS/iOS — both ends match the body color */
+body {
+  overscroll-behavior: none;
 }
 
 /* Scrollbar */
