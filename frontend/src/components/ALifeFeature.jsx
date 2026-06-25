@@ -34,8 +34,8 @@ function ArchNode({ label, sublabel, highlight = false }) {
     <div
       className={`rounded-xl px-4 py-3 text-center border transition-all duration-300
         ${highlight
-          ? 'bg-seagreen/20 border-seagreen text-white shadow-lg shadow-seagreen/20'
-          : 'bg-prussian/60 border-prussian/80 text-alabaster'
+          ? 'bg-seagreen/20 border-seagreen text-gray-900 dark:text-white shadow-lg shadow-seagreen/20'
+          : 'bg-gray-50 border-gray-200 text-gray-700 dark:bg-prussian/60 dark:border-prussian/80 dark:text-alabaster'
         }`}
     >
       <p className="font-mono text-sm font-medium">{label}</p>
@@ -67,8 +67,8 @@ export default function ALifeFeature() {
   const bodyClass = theme === 'dark' ? 'text-alabaster/90' : 'text-gray-700';
   const quoteClass = theme === 'dark' ? 'text-alabaster/80' : 'text-gray-600';
   const glowStyle = theme === 'dark'
-    ? { background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(204,88,3,0.08) 0%, transparent 70%)' }
-    : { background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(204,88,3,0.06) 0%, transparent 70%)' };
+    ? { background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(13,148,136,0.08) 0%, transparent 70%)' }
+    : { background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(13,148,136,0.06) 0%, transparent 70%)' };
 
   return (
     <section
@@ -159,15 +159,16 @@ export default function ALifeFeature() {
               {/* Phylon Card — PRIMARY, active */}
               <motion.div
                 variants={fadeUpVariants}
-                className="rounded-2xl p-6 border border-seagreen/50 bg-black/40 backdrop-blur-sm
+                className="rounded-2xl p-6 border border-seagreen/50 backdrop-blur-sm
                            hover:border-seagreen transition-all duration-300 hover:shadow-lg hover:shadow-seagreen/15
-                           ring-1 ring-seagreen/20"
+                           ring-1 ring-seagreen/20
+                           bg-white/80 dark:bg-black/40"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <Cpu size={16} className="text-seagreen" />
-                      <span className="font-display font-bold text-white text-lg">
+                      <span className="font-display font-bold text-gray-900 dark:text-white text-lg">
                         Phylon
                       </span>
                     </div>
@@ -191,7 +192,7 @@ export default function ALifeFeature() {
                     <span key={t} className="tag text-xs">{t}</span>
                   ))}
                 </div>
-                <div className="font-body text-sm text-alabaster/80 space-y-1.5">
+                <div className="font-body text-sm text-gray-700 dark:text-alabaster/80 space-y-1.5">
                   <p className="flex items-start gap-2">
                     <ArrowRight size={14} className="text-seagreen/60 flex-shrink-0 mt-0.5" />
                     ECS architecture with lock-free parallel processing via rayon
@@ -214,28 +215,33 @@ export default function ALifeFeature() {
               {/* EcoSim Lab Card — Planned / Not Started */}
               <motion.div
                 variants={fadeUpVariants}
-                className="rounded-2xl p-6 border border-prussian/60 bg-black/40 backdrop-blur-sm
-                           hover:border-seagreen/20 transition-all duration-300"
+                className="rounded-2xl p-6 border backdrop-blur-sm
+                           hover:border-seagreen/20 transition-all duration-300
+                           border-gray-200 bg-white/60 dark:border-prussian/60 dark:bg-black/40"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <Layers size={16} className="text-alabaster/40" />
-                      <span className="font-display font-bold text-white/70 text-lg">
+                      <Layers size={16} className="text-gray-400 dark:text-alabaster/40" />
+                      <span className="font-display font-bold text-gray-500 dark:text-white/70 text-lg">
                         EcoSim Lab
                       </span>
                     </div>
-                    <span className="font-mono text-xs px-2 py-0.5 rounded-full bg-prussian/60 text-alabaster/50 border border-prussian/80">
+                    <span className="font-mono text-xs px-2 py-0.5 rounded-full
+                                    bg-gray-100 text-gray-500 border border-gray-200
+                                    dark:bg-prussian/60 dark:text-alabaster/50 dark:border-prussian/80">
                       Planned: Not Yet Started
                     </span>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-1.5 mb-3">
                   {['Python', 'Mesa', 'FastAPI', 'React'].map(t => (
-                    <span key={t} className="font-mono text-xs px-3 py-1 rounded-full border border-prussian/60 text-alabaster/40 text-xs">{t}</span>
+                    <span key={t} className="font-mono text-xs px-3 py-1 rounded-full border
+                                            border-gray-200 text-gray-400
+                                            dark:border-prussian/60 dark:text-alabaster/40">{t}</span>
                   ))}
                 </div>
-                <div className="font-body text-sm text-alabaster/50 space-y-1.5">
+                <div className="font-body text-sm text-gray-500 dark:text-alabaster/50 space-y-1.5">
                   <p>
                     A separate, independent web-based ecological simulation platform
                     planned for future development. Not connected to Phylon. Will model
@@ -252,15 +258,17 @@ export default function ALifeFeature() {
               <GitBranch size={18} className="text-seagreen" />
               <p className="font-mono text-sm text-seagreen">phylon_architecture.diagram</p>
             </div>
-            <div className="rounded-2xl border border-prussian/60 bg-black/60 p-6 backdrop-blur-sm max-w-sm mx-auto">
+            <div className="rounded-2xl border p-6 backdrop-blur-sm max-w-sm mx-auto
+                           border-gray-200 bg-white/60 dark:border-prussian/60 dark:bg-black/60">
               <ArchNode label="wgpu Shader Layer" sublabel="Vulkan / Metal / DX12" highlight />
               <ArchArrow />
               <ArchNode label="GPU Compute Engine" sublabel="Chemical Diffusion + Rigid-Body" />
               <ArchArrow />
               <ArchNode label="ECS Core (Rust)" sublabel="30-crate DAG Workspace" />
               <ArchArrow />
-              <div className="rounded-xl px-4 py-3 text-center border border-prussian/50 bg-prussian/30">
-                <p className="font-mono text-xs text-alabaster/70">
+              <div className="rounded-xl px-4 py-3 text-center border
+                             border-gray-200 bg-gray-50 dark:border-prussian/50 dark:bg-prussian/30">
+                <p className="font-mono text-xs text-gray-600 dark:text-alabaster/70">
                   Neural Agents with L-System Morphology and Chemical Economy
                 </p>
               </div>

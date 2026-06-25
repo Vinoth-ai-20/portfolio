@@ -82,6 +82,52 @@ Go to **Google Account**, open **Security**, enable **2-Step Verification**, the
 
 ---
 
+## Blog and Writing
+
+The blog section is driven entirely by static files. No backend required.
+
+### File layout
+
+```
+frontend/public/blog/
+├── index.json          ← manifest (one entry per post)
+├── phylon-v0-architecture.md
+├── ecs-vs-oop-simulation.md
+└── your-next-post.md
+```
+
+### Publishing a new post
+
+1. Write your post in Markdown and save it as `frontend/public/blog/your-slug.md`.
+   The file supports full GitHub Flavored Markdown including tables, code blocks, and LaTeX math via KaTeX.
+
+2. Add an entry to `frontend/public/blog/index.json`:
+
+```json
+{
+  "slug": "your-slug",
+  "date": "2026-07-01",
+  "title": "Your Post Title",
+  "summary": "One or two sentences shown on the card.",
+  "tags": ["Tag1", "Tag2"],
+  "readingTime": 5
+}
+```
+
+3. Push to `main` and the GitHub Actions workflow deploys automatically. The post is live in about a minute.
+
+### Math formulas
+
+Inline math uses single dollar signs: `$E = mc^2$`
+
+Display math uses double dollar signs:
+
+```
+$$\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}$$
+```
+
+---
+
 ## CV Download
 
 Drop a file named `vinoth-murugan-cv.pdf` into `frontend/public/` and the Download CV button on the hero section will automatically link to it after the next build.

@@ -188,7 +188,7 @@ export default function Contact() {
               <div
                 className="lg:col-span-2 p-8 lg:p-10 flex flex-col gap-8"
                 style={{
-                  background: 'linear-gradient(160deg, #2a1a0a 0%, #1a0e06 60%, #120a04 100%)',
+                  background: 'linear-gradient(160deg, #0a2622 0%, #061a17 60%, #04120f 100%)',
                 }}
               >
                 <div>

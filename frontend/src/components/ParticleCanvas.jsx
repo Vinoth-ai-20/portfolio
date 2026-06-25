@@ -25,10 +25,9 @@ export default function ParticleCanvas({ theme }) {
     const CONNECTION_DIST = 120;
     const REPULSION_DIST = 100;
 
-    // Bright, highly visible orange — pops against the dark hero background
-    // In light mode, uses dark slate so particles are visible on the light bg
-    const DARK_COLOR = '#ff8c38';
-    const LIGHT_COLOR = '#334155';
+    // Teal particles to match site accent #0D9488
+    const DARK_COLOR = '#14b8a6';   // bright teal — pops on dark bg
+    const LIGHT_COLOR = '#0f766e';  // darker teal — readable on slate-50
 
     function getColor() {
       return themeRef.current === 'dark' ? DARK_COLOR : LIGHT_COLOR;

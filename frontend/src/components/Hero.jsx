@@ -63,8 +63,8 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background: theme === 'dark'
-            ? 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(204,88,3,0.06) 0%, transparent 70%)'
-            : 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(204,88,3,0.04) 0%, transparent 70%)',
+            ? 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(13,148,136,0.08) 0%, transparent 70%)'
+            : 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(13,148,136,0.05) 0%, transparent 70%)',
           zIndex: 1,
         }}
       />

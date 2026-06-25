@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "phylon-v0-architecture",
+    "date": "2026-06-25",
+    "title": "Phylon v0: Designing a Bit-Exact Artificial Life Engine in Rust",
+    "summary": "Why bit-exact reproducibility is non-negotiable for scientific simulation, and how Phylon enforces it across platforms using fixed-timestep updates and a 30-crate DAG workspace.",
+    "tags": ["Phylon", "Rust", "ALife", "Reproducibility"],
+    "readingTime": 6
+  },
+  {
+    "slug": "ecs-vs-oop-simulation",
+    "date": "2026-06-20",
+    "title": "Why ECS Outperforms OOP for Large-Scale Agent Simulation",
+    "summary": "A deep dive into why Data-Oriented Design and Entity-Component-System architecture consistently outperforms object-oriented approaches when simulating 100,000+ autonomous agents in real time.",
+    "tags": ["ECS", "Performance", "Rust", "Architecture"],
+    "readingTime": 8
+  },
+  {
+    "slug": "pinns-introduction",
+    "date": "2026-06-10",
+    "title": "Physics-Informed Neural Networks: What They Are and Why They Matter for Biology",
+    "summary": "An accessible introduction to PINNs for researchers coming from a biology or ecology background. Covers the core idea of embedding differential equations as loss terms and why this is powerful for modeling living systems.",
+    "tags": ["PINNs", "SciML", "Biology", "Machine Learning"],
+    "readingTime": 10
+  }
+]

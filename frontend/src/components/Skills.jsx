@@ -3,6 +3,7 @@ import {
   Code, Activity, Globe, Brain, Monitor, Server, Glasses, Palette,
 } from 'lucide-react';
 import { skills } from '../data/skills';
+import { useTheme } from '../hooks/useTheme';
 
 const prefersReducedMotion =
   typeof window !== 'undefined' &&
@@ -56,11 +57,19 @@ function SkillCard({ category, icon, items }) {
 }
 
 export default function Skills() {
+  const { theme } = useTheme();
+
+  const sectionStyle = theme === 'dark'
+    ? { background: 'linear-gradient(180deg, #000 0%, #060d1a 100%)' }
+    : { background: 'linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%)' };
+
+  const headingClass = theme === 'dark' ? 'text-white' : 'text-gray-900';
+  const subtitleClass = theme === 'dark' ? 'text-alabaster/70' : 'text-gray-500';
   return (
     <section
       id="skills"
       className="section-padding"
-      style={{ background: 'linear-gradient(180deg, #000 0%, #060d1a 100%)' }}
+      style={sectionStyle}
     >
       <div className="section-container">
         <motion.div
@@ -71,7 +80,7 @@ export default function Skills() {
         >
           {/* Heading */}
           <motion.div variants={fadeUpVariants} className="mb-12">
-            <h2 className="font-display font-bold text-4xl md:text-5xl text-white">
+            <h2 className={`font-display font-bold text-4xl md:text-5xl ${headingClass}`}>
               Technical Skills
             </h2>
             <div className="w-16 h-1 bg-seagreen rounded-full mt-4" />
