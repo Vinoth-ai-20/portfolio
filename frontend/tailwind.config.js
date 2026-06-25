@@ -7,7 +7,7 @@ export default {
       colors: {
         black:     "#000000",
         prussian:  "#14213d",
-        seagreen:  "#5c946e",
+        seagreen:  "#0D9488",
         alabaster: "#e5e5e5",
         white:     "#ffffff",
       },

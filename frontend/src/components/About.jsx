@@ -19,15 +19,15 @@ const staggerContainer = {
 const facts = [
   {
     icon: <GraduationCap size={16} className="text-seagreen flex-shrink-0" />,
-    text: 'B.Tech AI & DS — DSEC, 2024',
+    text: 'B.Tech AI and DS, DSEC, 2024',
   },
   {
     icon: <GraduationCap size={16} className="text-seagreen flex-shrink-0" />,
-    text: 'M.E. CSE — SKEC, 2026',
+    text: 'M.E. CSE, SKEC, 2026',
   },
   {
     icon: <Building2 size={16} className="text-seagreen flex-shrink-0" />,
-    text: 'Ex-TTE — ARVR Innovation Center, DSU (Oct 2024 – Jun 2026)',
+    text: 'Ex-TTE at ARVR Innovation Center, DSU (Oct 2024 to Jun 2026)',
   },
   {
     icon: <MapPin size={16} className="text-seagreen flex-shrink-0" />,
@@ -35,7 +35,7 @@ const facts = [
   },
   {
     icon: <Target size={16} className="text-seagreen flex-shrink-0" />,
-    text: 'PhD applicant — Computational Ecology, Europe 2027',
+    text: 'PhD applicant in Computational Biophysics, PINNs, and Scientific Machine Learning, Europe 2027',
   },
   {
     icon: <FlaskConical size={16} className="text-seagreen flex-shrink-0" />,
@@ -107,25 +107,26 @@ export default function About() {
             <motion.div variants={fadeUpVariants} className="space-y-5">
               <p className="font-body text-black/80 dark:text-alabaster text-lg leading-relaxed">
                 I am a creative technologist and Research Software Engineer from Thanjavur,
-                Tamil Nadu. My work lives at the intersection of computation, biology, and
-                simulation — building the software platforms that help scientists model how
+                Tamil Nadu. My work sits at the intersection of computation, biology, and
+                simulation. I build the software platforms that help scientists model how
                 living systems behave.
               </p>
               <p className="font-body text-black/70 dark:text-alabaster/80 leading-relaxed">
-                I hold a B.Tech in Artificial Intelligence & Data Science and have completed
+                I hold a B.Tech in Artificial Intelligence and Data Science and have completed
                 an M.E. in Computer Science Engineering (August 2026). I spent a year and a
                 half as a Technical Training Engineer at an ARVR Innovation Center, teaching
                 students and guiding projects in augmented and virtual reality.
               </p>
               <p className="font-body text-black/70 dark:text-alabaster/80 leading-relaxed">
-                I am now focused entirely on two things: building open-source simulation
+                I am now focused on two things: building open-source simulation
                 infrastructure as an independent researcher, and preparing for a fully funded
-                PhD in Computational Ecology at a European university in the 2027 intake.
+                PhD in Computational Biophysics, Physics-Informed Neural Networks, or
+                Scientific Machine Learning at a European university in the 2027 intake.
               </p>
               {/* Quote highlight */}
               <div className="border-l-2 border-seagreen pl-5 py-1">
                 <p className="font-body text-black dark:text-white font-medium leading-relaxed">
-                  My research software goal is simple — I want to build the tools that make
+                  My goal is simple: I want to build the tools that make
                   scientists faster at understanding life.
                 </p>
               </div>

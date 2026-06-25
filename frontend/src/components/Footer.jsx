@@ -1,4 +1,4 @@
-import { Mail } from 'lucide-react';
+import { Mail, Heart } from 'lucide-react';
 
 // Brand SVG icons (inline, since lucide-react doesn't include social brands)
 function GitHubIcon({ size = 18 }) {
@@ -25,6 +25,14 @@ function OrcidIcon({ size = 18 }) {
   );
 }
 
+function YouTubeIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  );
+}
+
 const socialLinks = [
   {
     id: 'footer-github',
@@ -37,6 +45,12 @@ const socialLinks = [
     icon: LinkedInIcon,
     href: 'https://linkedin.com/in/vinoth-murugan-2k3',
     label: 'LinkedIn',
+  },
+  {
+    id: 'footer-youtube',
+    icon: YouTubeIcon,
+    href: 'https://www.youtube.com/@ChromaticPolymath',
+    label: 'YouTube',
   },
   {
     id: 'footer-orcid',
@@ -81,8 +95,10 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <p className="font-mono text-xs text-white/30 text-center">
-          © 2026 Vinoth Murugan · Built with React + Tailwind + FastAPI
+        <p className="font-mono text-xs text-white/30 text-center flex items-center gap-1.5">
+          © 2026 Vinoth Murugan · Built with
+          <Heart size={12} className="text-seagreen fill-seagreen" />
+          by Vinoth Murugan
         </p>
       </div>
     </footer>

@@ -5,6 +5,10 @@ export default function ParticleCanvas({ theme }) {
   const animRef = useRef(null);
   const particlesRef = useRef([]);
   const mouseRef = useRef({ x: -9999, y: -9999 });
+  const themeRef = useRef(theme);
+
+  // Keep themeRef current without restarting animation loop
+  useEffect(() => { themeRef.current = theme; }, [theme]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -18,10 +22,24 @@ export default function ParticleCanvas({ theme }) {
     if (prefersReducedMotion) return;
 
     const isMobile = () => window.innerWidth < 768;
-    const COUNT = isMobile() ? 40 : 80;
     const CONNECTION_DIST = 120;
     const REPULSION_DIST = 100;
-    const PARTICLE_COLOR = '#5c946e';
+
+    // Bright, highly visible orange — pops against the dark hero background
+    // In light mode, uses dark slate so particles are visible on the light bg
+    const DARK_COLOR = '#ff8c38';
+    const LIGHT_COLOR = '#334155';
+
+    function getColor() {
+      return themeRef.current === 'dark' ? DARK_COLOR : LIGHT_COLOR;
+    }
+
+    function hexToRgb(hex) {
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      return `${r},${g},${b}`;
+    }
 
     function createParticle(w, h) {
       return {
@@ -29,8 +47,8 @@ export default function ParticleCanvas({ theme }) {
         y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.8,
         vy: (Math.random() - 0.5) * 0.8,
-        radius: 2,
-        opacity: Math.random() * 0.4 + 0.4,
+        radius: 2.5,
+        opacity: Math.random() * 0.4 + 0.5,
       };
     }
 
@@ -49,14 +67,7 @@ export default function ParticleCanvas({ theme }) {
       initParticles();
     }
 
-    function hexToRgb(hex) {
-      const r = parseInt(hex.slice(1, 3), 16);
-      const g = parseInt(hex.slice(3, 5), 16);
-      const b = parseInt(hex.slice(5, 7), 16);
-      return `${r},${g},${b}`;
-    }
 
-    const rgb = hexToRgb(PARTICLE_COLOR);
 
     function draw() {
       const w = canvas.width;
@@ -99,10 +110,11 @@ export default function ParticleCanvas({ theme }) {
         if (p.y < p.radius) { p.y = p.radius; p.vy *= -1; }
         if (p.y > h - p.radius) { p.y = h - p.radius; p.vy *= -1; }
 
-        // Draw particle
+        // Draw particle — full opacity, no extra dimming
+        const rgb = hexToRgb(getColor());
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${rgb},${p.opacity * 0.6})`;
+        ctx.fillStyle = `rgba(${rgb},${p.opacity})`;
         ctx.fill();
       });
 
@@ -115,7 +127,8 @@ export default function ParticleCanvas({ theme }) {
           const dy = a.y - b.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECTION_DIST) {
-            const alpha = (1 - dist / CONNECTION_DIST) * 0.2;
+            const rgb = hexToRgb(getColor());
+            const alpha = (1 - dist / CONNECTION_DIST) * 0.25;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -156,13 +169,11 @@ export default function ParticleCanvas({ theme }) {
     };
   }, []);
 
-  const canvasOpacity = theme === 'dark' ? 0.7 : 0.4;
-
   return (
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full"
-      style={{ opacity: canvasOpacity, zIndex: 0 }}
+      style={{ opacity: 0.85, zIndex: 0 }}
     />
   );
 }

@@ -16,20 +16,21 @@ const staggerContainer = {
 };
 
 const researchInterests = [
-  'Computational Ecology',
-  'Agent-Based Modeling & Simulation',
-  'Research Software Engineering for Life Sciences',
-  'Emergent Behavior & Complex Systems',
-  'Distributed Scientific Computing',
+  'Computational Biophysics',
+  'Physics-Informed Neural Networks (PINNs)',
+  'Scientific Machine Learning (SciML)',
+  'Agent-Based Modeling and Simulation',
+  'Emergent Behavior and Complex Systems',
   'Evolutionary Computation',
+  'Research Software Engineering for Life Sciences',
 ];
 
 const timeline = [
-  { date: 'Aug 2026', event: 'M.E. degree conferred' },
-  { date: 'Nov 2026', event: 'EcoSim Lab v1.0 public' },
-  { date: 'Dec 2026', event: 'Literature review on arXiv' },
-  { date: 'Jan 2027', event: 'PhD applications submitted' },
-  { date: '2027–2028', event: 'PhD begins' },
+  { date: 'Aug 2026', event: 'M.E. degree conferred (CSE, SKEC)' },
+  { date: 'Oct 2026', event: 'Phylon v1.0 alpha: public release' },
+  { date: 'Dec 2026', event: 'Research preprint submitted to arXiv' },
+  { date: 'Jan 2027', event: 'PhD applications submitted (Europe)' },
+  { date: '2027–2028', event: 'PhD in Computational Biophysics or SciML begins' },
 ];
 
 export default function Research() {
@@ -61,7 +62,7 @@ export default function Research() {
             variants={fadeUpVariants}
             className="font-body text-black/60 dark:text-alabaster/70 mb-12 text-lg"
           >
-            Targeting fully funded PhD positions in Computational Ecology — Europe 2027
+            Targeting fully funded PhD positions in Computational Biophysics and Scientific Machine Learning, Europe 2027
           </motion.p>
 
           {/* Two-column layout */}
@@ -69,33 +70,52 @@ export default function Research() {
             {/* Left — Research statement */}
             <motion.div variants={fadeUpVariants} className="space-y-5">
               <p className="font-body text-black/80 dark:text-alabaster leading-relaxed">
-                I am pursuing a fully funded PhD in Computational Ecology and Agent-Based
-                Modeling at a European research university, targeting the 2027 intake.
+                I am actively seeking a fully funded PhD position in Computational Biophysics,
+                Physics-Informed Neural Networks, or Scientific Machine Learning at a European
+                research university, targeting the 2027 intake.
               </p>
               <p className="font-body text-black/80 dark:text-alabaster leading-relaxed">
-                My research focus: building open-source simulation infrastructure that
-                enables ecologists and biologists to model complex ecosystem dynamics
-                without requiring deep programming expertise.
+                My research focus is on building open-source simulation infrastructure that bridges
+                physical modeling and machine learning. The goal is to build tools that let scientists encode known
+                physical laws directly into neural networks and use them alongside agent-based
+                approaches to study how complex living systems behave.
               </p>
-              <p className="font-body text-black/80 dark:text-alabaster leading-relaxed">
-                The work connects directly to what I am building now — EcoSim Lab is the
-                foundation of my PhD application portfolio and my proof of concept as a
-                Research Software Engineer.
+              <p className="font-body text-black/70 dark:text-alabaster/80 leading-relaxed">
+                Phylon, my M.E. thesis project, is the foundation of this trajectory. It
+                demonstrates my capability to design high-performance, reproducible, and
+                scientifically rigorous simulation software from scratch. Those same skills
+                that transfer directly into PINNs and SciML research engineering.
               </p>
+
+              {/* Highlight box */}
+              <div className="border border-seagreen/20 rounded-2xl p-5 bg-seagreen/5">
+                <p className="font-mono text-xs text-seagreen mb-2">target_focus_areas:</p>
+                <ul className="space-y-1.5">
+                  {[
+                    'Computational Biophysics: membrane dynamics, protein mechanics, cell motility',
+                    'Physics-Informed Neural Networks (PINNs) for biological systems',
+                    'Scientific Machine Learning for differential equation discovery',
+                  ].map(item => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-seagreen mt-2 flex-shrink-0" />
+                      <span className="font-body text-sm text-black/70 dark:text-alabaster/80">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
               <div className="border border-seagreen/20 rounded-2xl p-5 bg-seagreen/5">
                 <p className="font-body text-black/70 dark:text-alabaster/80 text-sm leading-relaxed">
                   Target institutions include{' '}
+                  <span className="text-seagreen font-medium">ETH Zurich</span>,{' '}
+                  <span className="text-seagreen font-medium">EPFL (Switzerland)</span>,{' '}
                   <span className="text-seagreen font-medium">
-                    Wageningen University & Research (Netherlands)
-                  </span>
-                  ,{' '}
-                  <span className="text-seagreen font-medium">
-                    Helmholtz Centre for Environmental Research UFZ (Germany)
+                    Max Planck Institute for Dynamics and Self-Organization
                   </span>
                   , and{' '}
-                  <span className="text-seagreen font-medium">TU Dresden</span> — institutions
-                  where the ODD Protocol for agent-based modeling was developed and where my
-                  technical approach has direct alignment with active research groups.
+                  <span className="text-seagreen font-medium">TU Munich</span>. These institutions
+                  with active research groups in computational biophysics, PINNs, and
+                  scientific machine learning where my technical background aligns directly.
                 </p>
               </div>
             </motion.div>
@@ -149,6 +169,11 @@ export default function Research() {
                   <div className="flex items-center gap-2">
                     <span className="px-3 py-1 rounded-full bg-prussian/30 dark:bg-prussian/60 border border-prussian/60 text-xs font-mono text-alabaster/70">
                       📝 Preprint in preparation
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 rounded-full bg-seagreen/10 border border-seagreen/30 text-xs font-mono text-seagreen">
+                      🎯 Actively seeking research supervisors
                     </span>
                   </div>
                 </div>

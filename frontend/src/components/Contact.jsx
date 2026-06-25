@@ -41,6 +41,14 @@ function OrcidIcon({ size = 20 }) {
   );
 }
 
+function YouTubeIcon({ size = 20 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  );
+}
+
 const contactInfo = [
   {
     id: 'contact-email',
@@ -55,6 +63,13 @@ const contactInfo = [
     label: 'GitHub',
     value: 'github.com/Vinoth-ai-20',
     href: 'https://github.com/Vinoth-ai-20',
+  },
+  {
+    id: 'contact-youtube',
+    Icon: YouTubeIcon,
+    label: 'YouTube',
+    value: '@ChromaticPolymath',
+    href: 'https://www.youtube.com/@ChromaticPolymath',
   },
   {
     id: 'contact-linkedin',
@@ -74,15 +89,16 @@ const contactInfo = [
     id: 'contact-location',
     Icon: MapPin,
     label: 'Location',
-    value: 'Tamil Nadu, India · Remote globally',
+    value: 'Tamil Nadu, India (open to remote globally)',
     href: null,
   },
 ];
 
 const subjects = [
-  'PhD Inquiry',
-  'Research Collaboration',
-  'Project Discussion',
+  'Research Guide Inquiry',
+  'PhD Collaboration',
+  'Open Source Contribution',
+  'Freelance Project',
   'Other',
 ];
 
@@ -148,7 +164,7 @@ export default function Contact() {
           {/* Heading */}
           <motion.div variants={fadeUpVariants} className="mb-3">
             <h2 className="font-display font-bold text-4xl md:text-5xl text-black dark:text-white">
-              Get In Touch
+              Connect
             </h2>
             <div className="w-16 h-1 bg-seagreen rounded-full mt-4" />
           </motion.div>
@@ -156,7 +172,9 @@ export default function Contact() {
             variants={fadeUpVariants}
             className="font-body text-black/60 dark:text-alabaster/70 mb-12 text-lg"
           >
-            For PhD collaboration inquiries, research discussions, or project opportunities.
+            I am actively seeking research supervisors and PhD collaboration opportunities
+            in Computational Biophysics, PINNs, and Scientific Machine Learning. Reach out
+            for research discussions, project work, or open source collaboration.
           </motion.p>
 
           {/* Main card — two columns inside */}
@@ -166,20 +184,21 @@ export default function Contact() {
                        shadow-2xl shadow-black/20 dark:shadow-black/60"
           >
             <div className="grid lg:grid-cols-5">
-              {/* ── Left panel — dark green info strip ── */}
+              {/* Left panel — dark info strip */}
               <div
                 className="lg:col-span-2 p-8 lg:p-10 flex flex-col gap-8"
                 style={{
-                  background: 'linear-gradient(160deg, #1a3a2a 0%, #0d2018 60%, #0a1a14 100%)',
+                  background: 'linear-gradient(160deg, #2a1a0a 0%, #1a0e06 60%, #120a04 100%)',
                 }}
               >
                 <div>
                   <p className="font-mono text-xs text-seagreen/60 mb-1">contact_info.json</p>
                   <h3 className="font-display font-bold text-2xl text-white mb-2">
-                    Let's work together
+                    Let us work together
                   </h3>
                   <p className="font-body text-sm text-white/50 leading-relaxed">
-                    Open to PhD supervisors, research collaborators, and software project discussions.
+                    Open to PhD supervisors, research collaborators, and software
+                    project discussions. I respond to every message personally.
                   </p>
                 </div>
 
@@ -234,6 +253,14 @@ export default function Contact() {
                     <LinkedInIcon size={16} />
                   </a>
                   <a
+                    href="https://www.youtube.com/@ChromaticPolymath"
+                    target="_blank" rel="noopener noreferrer"
+                    aria-label="YouTube"
+                    className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-seagreen hover:border-seagreen/40 hover:bg-seagreen/10 transition-all"
+                  >
+                    <YouTubeIcon size={16} />
+                  </a>
+                  <a
                     href="https://orcid.org/0009-0007-2730-2139"
                     target="_blank" rel="noopener noreferrer"
                     aria-label="ORCID"
@@ -244,7 +271,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* ── Right panel — form ── */}
+              {/* Right panel — form */}
               <div className="lg:col-span-3 bg-alabaster dark:bg-prussian/30 p-8 lg:p-10">
                 <form
                   id="contact-form"
@@ -330,7 +357,7 @@ export default function Contact() {
                       name="message"
                       value={form.message}
                       onChange={handleChange}
-                      placeholder="Tell me about your research, collaboration idea, or inquiry..."
+                      placeholder="Tell me about your research group, collaboration idea, or inquiry..."
                       rows={5}
                       className={`w-full bg-white dark:bg-black/40 border rounded-xl px-4 py-3 font-body text-sm
                                  text-black dark:text-white placeholder-black/30 dark:placeholder-white/20
@@ -378,7 +405,7 @@ export default function Contact() {
                                  rounded-xl px-4 py-3"
                     >
                       <CheckCircle size={16} className="flex-shrink-0" />
-                      <span>Message sent. I'll get back to you soon.</span>
+                      <span>Message sent. I will get back to you soon.</span>
                     </motion.div>
                   )}
                   {status === 'error' && (

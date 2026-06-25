@@ -7,8 +7,9 @@ const navLinks = [
   { label: 'ALife', href: '#alife' },
   { label: 'Projects', href: '#projects' },
   { label: 'Research', href: '#research' },
+  { label: 'Blog', href: '#blog' },
   { label: 'Creative', href: '#creative' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Connect', href: '#contact' },
 ];
 
 export default function Navbar() {

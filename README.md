@@ -2,83 +2,28 @@
 
 **Live site:** <https://Vinoth-ai-20.github.io/portfolio>
 
-A professional portfolio website for Vinoth Murugan, Artificial Life Research Engineer.
-Built with React 18 + Vite + Tailwind CSS + Framer Motion (frontend) and FastAPI (backend).
+A personal portfolio for Vinoth Murugan, a Research Software Engineer and M.E. Computer Science graduate from Tamil Nadu, India. The site showcases ongoing work on Phylon (an Artificial Life research platform), a growing body of research software projects, and a shift toward Computational Biophysics, Physics-Informed Neural Networks (PINNs), and Scientific Machine Learning for PhD applications in Europe (2027 intake).
 
-## Monorepo Structure
+---
 
-```powershell
+## Project Structure
+
+```
 vinoth-portfolio/
-├── frontend/           ← React + Vite app
-├── backend/            ← FastAPI email handler
+├── frontend/           React + Vite app (deployed to GitHub Pages)
+├── backend/            FastAPI email handler (deployed to Render)
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml  ← Auto-deploy to GitHub Pages on push to main
+│       └── deploy.yml  Automatic deployment to GitHub Pages on every push to main
 └── README.md
 ```
 
-## Setup Steps
-
-### 1. Create GitHub repository
-
-Name it exactly: **portfolio**
-
-Push this code to the `main` branch:
-
-```bash
-git init
-git add .
-git commit -m "Initial portfolio build"
-git remote add origin https://github.com/Vinoth-ai-20/portfolio.git
-git push -u origin main
-```
-
-### 2. Enable GitHub Pages
-
-Repository Settings → Pages → Source: **Deploy from branch** → select `gh-pages` branch → root folder
-
-### 3. Auto-deploy via GitHub Actions
-
-The `.github/workflows/deploy.yml` workflow automatically:
-
-- Builds the frontend on every push to `main`
-- Deploys to the `gh-pages` branch
-
-**No manual deployment needed** — just push to `main`.
-
-### 4. Deploy backend to Render
-
-1. Create a free account at [render.com](https://render.com)
-2. New Web Service → connect this GitHub repo → Root Directory: `backend`
-3. Add environment variables:
-   - `GMAIL_USER` = `vinoth.ac.in@gmail.com`
-   - `GMAIL_APP_PASSWORD` = your 16-character Google App Password
-4. Update `frontend/.env.production` with your Render service URL
-
-### 5. Enable Gmail App Password
-
-Google Account → Security → 2-Step Verification → App Passwords
-
-Generate one for **Mail** → copy the 16-character password to Render env vars.
-
-### 6. Local Development
-
-```bash
-# Frontend
-cd frontend
-npm install
-npm run dev       # http://localhost:5173
-
-# Backend
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload  # http://localhost:8000
-```
+---
 
 ## Tech Stack
 
 | Layer | Technology |
-| ------- | ----------- |
+| --- | --- |
 | Frontend | React 18 + Vite 5 |
 | Styling | Tailwind CSS v3 |
 | Animations | Framer Motion |
@@ -88,9 +33,69 @@ uvicorn main:app --reload  # http://localhost:8000
 | Email | Gmail SMTP |
 | Deployment | GitHub Pages + Render.com |
 
+---
+
+## Local Development
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev        # http://localhost:5173
+```
+
+### Backend
+
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload   # http://localhost:8000
+```
+
+---
+
+## Deployment
+
+### GitHub Pages (Frontend)
+
+The GitHub Actions workflow at `.github/workflows/deploy.yml` builds the frontend and pushes the output to the `gh-pages` branch on every push to `main`. No manual step is needed.
+
+To enable it for your own fork:
+
+1. Go to **Repository Settings** and open the **Pages** tab.
+2. Set the source to **Deploy from branch**, select `gh-pages`, and choose the root folder.
+3. Push any commit to `main` and the workflow takes care of the rest.
+
+### Render (Backend)
+
+1. Create a free account at [render.com](https://render.com).
+2. Create a new Web Service, connect this repository, and set the Root Directory to `backend`.
+3. Add these environment variables in the Render dashboard:
+   - `GMAIL_USER` — your Gmail address
+   - `GMAIL_APP_PASSWORD` — your 16-character Google App Password
+4. Update `frontend/.env.production` with the Render service URL.
+
+### Gmail App Password
+
+Go to **Google Account**, open **Security**, enable **2-Step Verification**, then generate an App Password under **App Passwords**. Use it as `GMAIL_APP_PASSWORD` in Render.
+
+---
+
+## CV Download
+
+Drop a file named `vinoth-murugan-cv.pdf` into `frontend/public/` and the Download CV button on the hero section will automatically link to it after the next build.
+
+---
+
 ## Author
 
-**Vinoth Murugan** — Artificial Life Research Engineer  
-📍 Tamil Nadu, India  
-🔬 ORCID: [0009-0007-2730-2139](https://orcid.org/0009-0007-2730-2139)  
-📧 <vinoth.ac.in@gmail.com>
+**Vinoth Murugan**
+Research Software Engineer and M.E. CSE Graduate
+
+- GitHub: [github.com/Vinoth-ai-20](https://github.com/Vinoth-ai-20)
+- YouTube: [youtube.com/@ChromaticPolymath](https://www.youtube.com/@ChromaticPolymath)
+- LinkedIn: [linkedin.com/in/vinoth-murugan-2k3](https://linkedin.com/in/vinoth-murugan-2k3)
+- ORCID: [0009-0007-2730-2139](https://orcid.org/0009-0007-2730-2139)
+- Email: vinoth.ac.in@gmail.com
+- Location: Tamil Nadu, India

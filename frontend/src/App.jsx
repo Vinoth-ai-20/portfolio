@@ -6,6 +6,7 @@ import ALifeFeature from './components/ALifeFeature';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Research from './components/Research';
+import Blog from './components/Blog';
 import Creative from './components/Creative';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -24,6 +25,7 @@ export default function App() {
           <Projects />
           <Skills />
           <Research />
+          <Blog />
           <Creative />
           <Contact />
         </main>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronDown, ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, ExternalLink, Download, MapPin } from 'lucide-react';
 import ParticleCanvas from './ParticleCanvas';
 import { useTheme } from '../hooks/useTheme';
 
@@ -8,22 +8,39 @@ const prefersReducedMotion =
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const fadeUp = prefersReducedMotion
-  ? { initial: {}, animate: {}, transition: {} }
-  : {
-      initial: { opacity: 0, y: 30 },
-      animate: { opacity: 1, y: 0 },
-      transition: { duration: 0.5, ease: 'easeOut' },
-    };
+// Rotating research identity labels
+const IDENTITY_LABELS = [
+  'artificial_life_researcher.py',
+  'computational_biophysics.py',
+  'scientific_ml_engineer.py',
+  'pinns_researcher.py',
+  'agent_based_modeler.py',
+  'research_software_engineer.py',
+];
 
 export default function Hero() {
   const { theme } = useTheme();
   const [showChevron, setShowChevron] = useState(true);
+  const [labelIndex, setLabelIndex] = useState(0);
+  const [labelVisible, setLabelVisible] = useState(true);
 
   useEffect(() => {
     const onScroll = () => setShowChevron(window.scrollY < 80);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Cycle through identity labels with a smooth fade transition
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    const interval = setInterval(() => {
+      setLabelVisible(false);
+      setTimeout(() => {
+        setLabelIndex(i => (i + 1) % IDENTITY_LABELS.length);
+        setLabelVisible(true);
+      }, 400);
+    }, 2800);
+    return () => clearInterval(interval);
   }, []);
 
   const scrollToAlife = (e) => {
@@ -34,7 +51,9 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black dark:bg-black"
+      className={`relative min-h-screen flex items-center justify-center overflow-hidden ${
+        theme === 'dark' ? 'bg-black' : 'bg-slate-50'
+      }`}
     >
       {/* Particle canvas background */}
       <ParticleCanvas theme={theme} />
@@ -43,8 +62,9 @@ export default function Hero() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background:
-            'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(92,148,110,0.06) 0%, transparent 70%)',
+          background: theme === 'dark'
+            ? 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(204,88,3,0.06) 0%, transparent 70%)'
+            : 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(204,88,3,0.04) 0%, transparent 70%)',
           zIndex: 1,
         }}
       />
@@ -54,23 +74,24 @@ export default function Hero() {
         className="relative section-container flex flex-col items-center text-center"
         style={{ zIndex: 10 }}
       >
-        {/* Eyebrow */}
-        <motion.p
-          className="font-mono text-seagreen text-sm mb-6 tracking-wider"
-          {...(prefersReducedMotion
-            ? {}
-            : {
-                initial: { opacity: 0, y: 20 },
-                animate: { opacity: 1, y: 0 },
-                transition: { duration: 0.5, delay: 0.1 },
-              })}
-        >
-          artificial_life_research_engineer.py
-        </motion.p>
+        {/* Dynamic rotating eyebrow label */}
+        <div className="h-7 mb-6 flex items-center justify-center">
+          <motion.p
+            key={labelIndex}
+            className="font-mono text-seagreen text-sm tracking-wider"
+            initial={prefersReducedMotion ? {} : { opacity: 0, y: 6 }}
+            animate={{ opacity: labelVisible ? 1 : 0, y: labelVisible ? 0 : -6 }}
+            transition={{ duration: 0.35, ease: 'easeInOut' }}
+          >
+            {IDENTITY_LABELS[labelIndex]}
+          </motion.p>
+        </div>
 
         {/* Name */}
         <motion.h1
-          className="font-display font-bold text-white leading-none mb-6"
+          className={`font-display font-bold leading-none mb-6 ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}
           style={{ fontSize: 'clamp(3rem, 10vw, 6rem)' }}
           {...(prefersReducedMotion
             ? {}
@@ -87,7 +108,9 @@ export default function Hero() {
 
         {/* Subtitle */}
         <motion.p
-          className="font-body text-alabaster text-lg max-w-2xl mb-4 leading-relaxed"
+          className={`font-body text-lg max-w-2xl mb-4 leading-relaxed ${
+            theme === 'dark' ? 'text-alabaster' : 'text-gray-700'
+          }`}
           style={{ fontSize: '1.125rem' }}
           {...(prefersReducedMotion
             ? {}
@@ -97,15 +120,17 @@ export default function Hero() {
                 transition: { duration: 0.5, delay: 0.4 },
               })}
         >
-          Artificial Life Research Engineer developing{' '}
+          Research Software Engineer building{' '}
           <span className="text-seagreen font-semibold">Phylon</span>, a research-grade
-          platform for agent-based simulation, evolutionary computation, emergent behavior,
-          and adaptive intelligence.
+          platform for agent-based simulation, evolutionary computation, and emergent
+          behavior. Shifting focus toward{' '}
+          <span className="text-seagreen font-semibold">Computational Biophysics</span>,
+          PINNs, and Scientific Machine Learning.
         </motion.p>
 
         {/* Location Tag */}
         <motion.p
-          className="font-mono text-seagreen text-sm mb-10"
+          className="font-mono text-seagreen text-sm mb-10 flex items-center gap-1.5 justify-center"
           {...(prefersReducedMotion
             ? {}
             : {
@@ -114,12 +139,13 @@ export default function Hero() {
                 transition: { duration: 0.5, delay: 0.55 },
               })}
         >
-          📍 Tamil Nadu, India → PhD applicant, Europe 2027
+          <MapPin size={14} className="text-seagreen" />
+          Tamil Nadu, India
         </motion.p>
 
         {/* CTA Buttons */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 items-center"
+          className="flex flex-col sm:flex-row gap-4 items-center flex-wrap justify-center"
           {...(prefersReducedMotion
             ? {}
             : {
@@ -145,6 +171,16 @@ export default function Hero() {
           >
             <ExternalLink size={18} />
             GitHub
+          </a>
+          <a
+            id="hero-cta-cv"
+            href="/vinoth-murugan-cv.pdf"
+            download="Vinoth_Murugan_CV.pdf"
+            className="btn-secondary text-base flex items-center gap-2"
+            title="Download CV — upload vinoth-murugan-cv.pdf to frontend/public/ to activate"
+          >
+            <Download size={18} />
+            Download CV
           </a>
         </motion.div>
       </div>
