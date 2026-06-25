@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://Vinoth-ai-20.github.io/portfolio/sitemap.xml

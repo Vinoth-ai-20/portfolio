@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Agent grid: 6 dots in a 2x3 pattern -->
+  <rect width="32" height="32" rx="6" fill="#000000"/>
+  <!-- Row 1 -->
+  <circle cx="9" cy="9" r="3" fill="#5c946e"/>
+  <circle cx="16" cy="9" r="3" fill="#5c946e" opacity="0.7"/>
+  <circle cx="23" cy="9" r="3" fill="#5c946e" opacity="0.4"/>
+  <!-- Row 2 -->
+  <circle cx="9" cy="23" r="3" fill="#5c946e" opacity="0.4"/>
+  <circle cx="16" cy="23" r="3" fill="#5c946e" opacity="0.7"/>
+  <circle cx="23" cy="23" r="3" fill="#5c946e"/>
+  <!-- Connection lines -->
+  <line x1="9" y1="9" x2="23" y2="23" stroke="#5c946e" stroke-width="0.8" opacity="0.3"/>
+  <line x1="23" y1="9" x2="9" y2="23" stroke="#5c946e" stroke-width="0.8" opacity="0.3"/>
+</svg>
